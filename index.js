@@ -6,6 +6,7 @@ import URL from "./models/url.js"
 
 dotenv.config()
 const app = express()
+const port = process.env.PORT || 2000;
 
 connectToMongoDB(process.env.CONNECTION_STRING).then(()=>{
 	console.log("MONGODB Connected Successfully!")
@@ -24,6 +25,6 @@ app.get("/:shortId", async(req,res)=>{
 	res.redirect(entry.redirectUrl)
 :})
 
-app.listen(2000,()=>{
-	console.log(`App is running on port: 2000`)
+app.listen(port,()=>{
+	console.log(`App is running on port: ${port}`)
 })
