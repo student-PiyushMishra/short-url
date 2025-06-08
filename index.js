@@ -1,29 +1,30 @@
 import express from "express"
 import urlRoute from "./routes/url.js" 
 import dotenv from "dotenv"
+import ejs from "ejs"
 import connectToMongoDB from "./connect.js"
-import URL from "./models/url.js"
+import path from "path"
+import { fileURLToPath } from 'url';
+import redirectURL from "./routes/redirect.js"
 
 dotenv.config()
+
 const app = express()
 const port = process.env.PORT || 2000;
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename) 
+
+app.set("view engine","ejs")
+app.use(express.static(path.join(__dirname,"public")))
 
 connectToMongoDB(process.env.CONNECTION_STRING).then(()=>{
 	console.log("MONGODB Connected Successfully!")
 })
 
 app.use(express.json())
-app.use('/url',urlRoute)
 
-app.get("/:shortId", async(req,res)=>{
-	const shortId = req.params.shortId;
-	const entry = await URL.findOneAndUpdate({shortId},{
-	$push: {
-	  visitHistory: {timestamp: Date.now()}
-	}
-	})
-	res.redirect(entry.redirectUrl)
-})
+app.use('/url',urlRoute)
+app.use("/",redirectURL)
 
 app.listen(port,()=>{
 	console.log(`App is running on port: ${port}`)
