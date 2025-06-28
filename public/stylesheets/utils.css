@@ -1,0 +1,33 @@
+@font-face{
+    font-family: "apna font";
+    src: url(../fonts/Poppins-Regular.woff2);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'apna font';
+}
+html,body{
+    height:100%;
+    width: 100%;
+}
+.main{
+    min-height:100%;
+    width:100vw;
+
+    background-color:#272323;
+    padding:2vh 2vw;
+}
+button{
+    font-size: large;
+    background-color:lightseagreen;
+    color:whitesmoke;
+    padding:0.5em 1em;
+    border-radius:5px;
+    border:none;
+    cursor:pointer;
+}
+button:hover{
+    background-color:rgba(32, 178, 171, 0.921);
+}

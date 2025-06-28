@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../stylesheets/utils.css">
+    <link rel="stylesheet" href="../stylesheets/form.css">
+</head>
+<body>
+    <div class="main">
+        <form action="/auth/login" method="post">
+            <label for="email">
+                <p name="email">Email:</p>
+                <input type="email" placeholder="example@xyz.com" name="email" required>
+            </label>
+            <label for="password">
+                <p name="password">Password:</p>
+                <input type="password" placeholder="secret" name="password" required>
+            </label>
+            <button type="submit">LogIn</button>
+        </form>
+    </div>
+</body>
+</html>

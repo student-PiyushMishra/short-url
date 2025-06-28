@@ -20,6 +20,8 @@ const __dirname = path.dirname(__filename)
 app.set("view engine","ejs")
 app.use(express.static(path.join(__dirname,"public")))
 app.use(cookieParser())
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
 
 connectToMongoDB(process.env.CONNECTION_STRING).then(()=>{
 	console.log("MONGODB Connected Successfully!")
