@@ -6,6 +6,9 @@ import connectToMongoDB from "./connect.js"
 import path from "path"
 import { fileURLToPath } from 'url';
 import redirectURL from "./routes/redirect.js"
+import authRoutes from "./routes/auth.js"
+import cookieParser from "cookie-parser"
+
 
 dotenv.config()
 
@@ -16,6 +19,7 @@ const __dirname = path.dirname(__filename)
 
 app.set("view engine","ejs")
 app.use(express.static(path.join(__dirname,"public")))
+app.use(cookieParser())
 
 connectToMongoDB(process.env.CONNECTION_STRING).then(()=>{
 	console.log("MONGODB Connected Successfully!")
@@ -25,6 +29,8 @@ app.use(express.json())
 
 app.use('/url',urlRoute)
 app.use("/",redirectURL)
+app.use("/auth",authRoutes)
+
 
 app.listen(port,()=>{
 	console.log(`App is running on port: ${port}`)
