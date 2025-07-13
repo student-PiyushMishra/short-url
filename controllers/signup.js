@@ -7,7 +7,7 @@ async function makeAUser(req,res,next){
 		email: req.body.email,
 		password: req.body.password
 	  })
-	  next();
+    next();
 	}
  	return null;
 }

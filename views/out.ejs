@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMURLs</title>
+    <link rel="stylesheet" href="../stylesheets/utils.css">
+    <style>
+        .main{
+             display:flex;
+             flex-direction:column;
+             align-items:center;
+             justify-content:center;
+             color:white;
+             gap:2vh;
+        }
+    </style>
 </head>
 <body>
+   <div class="main">
     You're not Authenticated.
-    <br>
-    <a href="/auth/signup"><button>Signup</button></a> 
-    <a href="/auth/login"><button>Login</button></a>
+    <div class="buttons">
+      <a href="/auth/signup"><button>Signup</button></a> 
+      <a href="/auth/login"><button>Login</button></a>
+    </div>
+    </div>    
 </body>
 </html>

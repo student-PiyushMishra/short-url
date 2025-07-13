@@ -9,7 +9,6 @@ import redirectURL from "./routes/redirect.js"
 import authRoutes from "./routes/auth.js"
 import cookieParser from "cookie-parser"
 
-
 dotenv.config()
 
 const app = express()
@@ -27,12 +26,17 @@ connectToMongoDB(process.env.CONNECTION_STRING).then(()=>{
 	console.log("MONGODB Connected Successfully!")
 })
 
-app.use(express.json())
+app.use((req,res,next)=>{
+  if(!JSON.parse(process.env.availableBaseRoutes).includes(req.url.split("/")[1])){
+    console.log("here",req.url.split("/")[1])
+    return res.render("404")
+  }
+  next()
+})
 
 app.use('/url',urlRoute)
-app.use("/",redirectURL)
 app.use("/auth",authRoutes)
-
+app.use("/",redirectURL)
 
 app.listen(port,()=>{
 	console.log(`App is running on port: ${port}`)

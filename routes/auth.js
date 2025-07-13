@@ -1,6 +1,7 @@
 import express from "express"
 import restrictToLoggedInUsers from "../middlewares/auth.js"
 import signupController from "../controllers/signup.js"
+import loginController from "../controllers/login.js"
 
 const router = express.Router();
 
@@ -22,6 +23,17 @@ router.get("/signup",(req,res)=>{
 
 router.get("/login",(req,res)=>{
 	res.render("login")
+})
+
+router.post("/login", async (req,res)=>{
+  const dataReturned = await loginController(req.body)
+  if(dataReturned.split(" ")[0] == "success"){
+    res.cookie("Bearer",dataReturned.split(" ")[1])
+    console.log("tarara")
+    res.redirect('/')
+  }else{
+    res.send(`Error: ${dataReturned}`)
+  }
 })
 
 router.get("/out",(req,res)=>{
