@@ -37,7 +37,6 @@ router.post("/login", async (req,res)=>{
   const dataReturned = await loginController(req.body)
   if(dataReturned.split(" ")[0] == "success"){
     res.cookie("Bearer",dataReturned.split(" ")[1])
-    console.log("tarara")
     res.redirect('/')
   }else{
     res.send(`Error: ${dataReturned}`)
