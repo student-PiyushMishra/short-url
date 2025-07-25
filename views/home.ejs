@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMURLs</title>
+    <link rel="stylesheet" href="./stylesheets/utils.css">
+    <link rel="stylesheet" href="./stylesheets/home.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+   <div class="main">
+  <h1>Welcome to PMURLs, <span> Mr. <%=username%></span></h1>
+    <br>
+    <h3>Your links...</h3>
+    <table border="1">
+  <thead>
+    <tr>
+      <th>Short ID</th>
+      <th>Original URL</th>
+    </tr>
+  </thead>
+  <tbody id="linkTableBody">
+  </tbody>
+</table>
+    </div>   
+  <script>
+    const data = <%-links%>  
+    const tableBody = document.getElementById("linkTableBody");
+    data.forEach(link => {
+      const tableRow = document.createElement('tr')
+      const shortId = document.createElement('td')
+      const redirectUrl = document.createElement('td')
+      shortId.textContent = link.shortId 
+      redirectUrl.textContent =  link.redirectUrl  
+      tableRow.appendChild(shortId) 
+      tableRow.appendChild(redirectUrl) 
+      tableBody.appendChild(tableRow)
+    })
+  </script>
+</body>
+</html>

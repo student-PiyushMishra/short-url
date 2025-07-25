@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+  margin:0;
+  padding: 0;
+  box-sizing:border-box;
+}
+
+html,body{
+  height:100%;
+  width:100%;
+  color:white;
+}
+
+h1{
+  font-size:1.5em;
+}
+
+span{
+  display:block;
+  color:lightseagreen;
+  font-size:0.8em;
+  font-family:"Advent Pro",'apna font';
+}
+
+.main{
+  display:flex;
+  flex-direction:column;
+  gap: 2vh;
+}

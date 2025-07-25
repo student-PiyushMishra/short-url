@@ -8,7 +8,7 @@ const login = async (userData)=>{
     return "No user found with email: " + userEmail
   }else{
     if(user.password == userData.password){
-      const token = jwt.sign({email:user.email,password:user.password},process.env.jwtSecret,{expiresIn: '30d'})
+      const token = jwt.sign({_id:user._id,username:user.fullName,email:user.email},process.env.jwtSecret,{expiresIn: '30d'})
       return "success " + token 
     }
     else{

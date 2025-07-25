@@ -31,3 +31,6 @@ button{
 button:hover{
     background-color:rgba(32, 178, 171, 0.921);
 }
+.buttons{
+    gap:2rem;
+}
