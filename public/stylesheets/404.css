@@ -34,7 +34,7 @@ body {
 a {
   display: block;
   cursor: pointer;
-  animation: pulseColor 1000ms linear 3100ms forwards;
+  animation: pulseColor 1000ms linear 500ms forwards;
   font-weight: 500;
 }
 

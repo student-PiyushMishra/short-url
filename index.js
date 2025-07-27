@@ -28,7 +28,9 @@ connectToMongoDB(process.env.CONNECTION_STRING).then(()=>{
 
 app.use((req,res,next)=>{
   if(!JSON.parse(process.env.availableBaseRoutes).includes(req.url.split("/")[1])){
-    return res.render("404")
+    if(req.url.split('/').length > 2){
+      res.render('404')
+    }
   }
   next()
 })

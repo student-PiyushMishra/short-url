@@ -39,7 +39,7 @@ router.post("/login", async (req,res)=>{
     res.cookie("Bearer",dataReturned.split(" ")[1])
     res.redirect('/')
   }else{
-    res.send(`Error: ${dataReturned}`)
+    res.render('info',{info:`Error: ${dataReturned}`,msg:"Return back to login...",href:"/auth/login"})
   }
 })
 
