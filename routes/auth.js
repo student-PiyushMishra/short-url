@@ -36,7 +36,12 @@ router.get("/login",ifLoggedIn,(req,res)=>{
 router.post("/login", async (req,res)=>{
   const dataReturned = await loginController(req.body)
   if(dataReturned.split(" ")[0] == "success"){
-    res.cookie("Bearer",dataReturned.split(" ")[1])
+    res.cookie("Bearer",dataReturned.split(" ")[1],{
+      httpOnly:true,
+      secure: true,
+      sameSite: 'Lax',
+      maxAge: 1000 * 60 * 60 * 24 * 30 
+    })
     res.redirect('/')
   }else{
     res.render('info',{info:`Error: ${dataReturned}`,msg:"Return back to login...",href:"/auth/login"})
