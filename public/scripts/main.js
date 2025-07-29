@@ -38,10 +38,30 @@ async function deleteLink(shortId){
   .catch((e)=>{console.error(e)})
 }
 
+const warning = ``
+
+
 if(document.querySelector('.part2')){
   document.querySelector('.part2').addEventListener('click',(e)=>{
     if(e.target.className == 'ri-delete-bin-6-line'){
-      deleteLink(e.target.closest('.link').querySelector('.shortid').textContent)
+      const popup = document.querySelector('.popup')
+      const link = e.target.closest('.link')
+      const shortId = link.querySelector('.shortid').textContent
+      const redirectUrl = link.querySelector('.redirecturl').textContent
+      // deleteLink(e.target.closest('.link').querySelector('.shortid').textContent)
+      popup.innerHTML = writeWarning(shortId, redirectUrl)
+      popup.style.display = 'flex'
+      document.querySelector('.buttons').addEventListener('click',function(e){
+        if(e.target.className == "yes"){deleteLink(shortId)}
+        if(e.target.className == "no"){popup.style.display='none'}
+      })
     }
   })
+}
+
+function writeWarning(shortId, redirectUrl){
+  return `<h3>Are you sure you want to delete this link?</h3>
+      <h4>ShortId: <span>${shortId}</span></h4>
+      <h4>RedirectUrl: <span>${redirectUrl}</span></h4>
+     <div class="buttons"><button class="yes">Yes</button><button class="no">No</button></div>`
 }

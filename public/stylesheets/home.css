@@ -142,6 +142,37 @@ nav{
 .part2 .link .icons i:hover{
   background-color:#272323;
 }
+.popup{
+  height:max-content;
+  width:400px;
+  max-width:90vw;
+  display:none;
+  position:absolute;
+  top:50%;
+  border-radius:1em;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background-color: transparent;
+  box-shadow:10px 10px 10px rgba(0, 0, 0, 0.3), inset 10px 10px 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  padding:1em 2em;
+  flex-direction:column;
+  gap:3vh;
+  color:white;
+}
+.popup span{
+  color:lightseagreen;
+  display:inline;
+  margin-left:10px;
+  font-size:medium;
+}
+.popup .buttons{
+  width:100%;
+  display:flex;
+  justify-content: center;
+  gap:2rem;
+  margin-top:2vh;
+}
 @media (max-width:1200px){
   .links{
     flex-direction:column;
