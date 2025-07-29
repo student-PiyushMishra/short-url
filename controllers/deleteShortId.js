@@ -1,5 +1,6 @@
 import urlDb from "../models/url.js"
 
-export default function deleteShortId(req,res){
-	
+export default async function deleteShortId(req,res){
+  await urlDb.deleteOne({shortId: req.body.shortId})
+  res.redirect('/')	
 }

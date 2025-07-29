@@ -16,6 +16,6 @@ router.use(restrictToLoggedInUsers)
 
 router.post('/',handleGenerateNewShortUrl)
 
-router.post("/delete",deleteShortId)
+router.post("/delete", deleteShortId)
 
 export default router
