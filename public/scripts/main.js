@@ -38,13 +38,10 @@ async function deleteLink(shortId){
   .catch((e)=>{console.error(e)})
 }
 
-const warning = ``
-
-
 if(document.querySelector('.part2')){
   document.querySelector('.part2').addEventListener('click',(e)=>{
+    const popup = document.querySelector('.popup')
     if(e.target.className == 'ri-delete-bin-6-line'){
-      const popup = document.querySelector('.popup')
       const link = e.target.closest('.link')
       const shortId = link.querySelector('.shortid').textContent
       const redirectUrl = link.querySelector('.redirecturl').textContent
@@ -56,6 +53,16 @@ if(document.querySelector('.part2')){
         if(e.target.className == "no"){popup.style.display='none'}
       })
     }
+    if(e.target.className == "ri-share-fill"){
+      const link = e.target.closest('.link')
+      const shortId = link.querySelector('.shortid').textContent
+      popup.innerHTML = writeCopyMsg(shortId)
+      popup.style.display = 'flex'
+      document.querySelector('.popup button').addEventListener('click',function(){
+        navigator.clipboard.writeText(popup.querySelector('h4').textContent)
+          .then(()=>{popup.style.display = "none"; alert("Link copied to clipboard!")})
+      })
+    }
   })
 }
 
@@ -64,4 +71,10 @@ function writeWarning(shortId, redirectUrl){
       <h4>ShortId: <span>${shortId}</span></h4>
       <h4>RedirectUrl: <span>${redirectUrl}</span></h4>
      <div class="buttons"><button class="yes">Yes</button><button class="no">No</button></div>`
+}
+
+function writeCopyMsg(shortId){
+  return `<h3>You can share the following link with everyone...</h3>
+      <h4><span>https://pmurls.rf.gd/${shortId}</span></h4>
+      <button class="close">Copy & Close</button>`
 }
