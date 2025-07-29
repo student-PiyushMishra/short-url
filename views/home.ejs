@@ -7,6 +7,7 @@
     <title>PMURLs</title>
     <link rel="stylesheet" href="./stylesheets/utils.css">
     <link rel="stylesheet" href="./stylesheets/home.css">    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
     <script>
        let data = <%-links%>
     </script>
@@ -30,13 +31,14 @@
                 <input type="text" placeholder="yourUrl (optional)" name="customUrl" >
             </label>
             <button type="submit">Generate Link</button>
-            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 9.5C12.8284 9.5 13.5 8.82843 13.5 8C13.5 7.17157 12.8284 6.5 12 6.5C11.1716 6.5 10.5 7.17157 10.5 8C10.5 8.82843 11.1716 9.5 12 9.5ZM14 15H13V10.5H10V12.5H11V15H10V17H14V15Z"></path></svg> Redirect Url is the target and Custom Url is your preferred ShortId but that's optional.</p>
+            <p><i class="ri-information-2-fill"></i> Redirect Url is the target and Custom Url is your preferred ShortId but that's optional.</p>
           </form>
 
         </div>
         <div class="part2">
           <h3>Your links...</h3>
-          <div class="info"><p>ShortId</p><p>Redirect Url</p></div>          
+          <div class="info"><p>ShortId</p><p>Redirect Url</p></div>
+          
         </div>   
       </div>
     </div> 
