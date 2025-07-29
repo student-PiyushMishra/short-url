@@ -4,7 +4,7 @@ import URL from "../models/url.js"
 async function handleGenerateNewShortUrl(req,res){
   let shortId = nanoid(5);
 	const body = req.body;
-	let orgUrl = body.redirectUrl;
+	let orgUrl = body.redirectUrl.trim();
   if(body.customUrl.length > 1){shortId = body.customUrl}
 	if(!orgUrl){
 	  return res.status(400).json({error: "URL is REQUIRED!"})
