@@ -35,6 +35,12 @@ app.use((req,res,next)=>{
   next()
 })
 
+app.get('/sitemap.xml', (req, res) => {
+  res.set('Content-Type', 'application/xml');
+  res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+});
+
+
 app.use('/url',urlRoute)
 app.use("/auth",authRoutes)
 app.use("/",redirectURL)
