@@ -89,7 +89,7 @@ document.querySelector(".links").addEventListener("click", function (e) {
   const link = e.target.closest(".link");
   if (link) {
     const shortId = link.querySelector(".shortid").textContent;
-    location.href(`https://pmurls.rf.gd/${shortId}`);
+    window.location.href = `https://pmurls.rf.gd/${shortId}`;
   }
 });
 
