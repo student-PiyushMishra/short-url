@@ -5,9 +5,9 @@ async function handleGenerateNewShortUrl(req, res) {
   let shortId = nanoid(5);
   const body = req.body;
   let orgUrl = body.redirectUrl.trim();
-  if (body.customUrl.length > 1) {
+  if (body.customUrl) {
     const url = await URL.findOne({ shortId: body.customUrl });
-    if (url.length != 0) {
+    if (url) {
       return res.render("info", {
         info: "The shortId already exists...",
         msg: "Enter another shortId or kindly leave it blank we would handle it. Go back and resubmit the form... Sorry for your inconvenience...",
