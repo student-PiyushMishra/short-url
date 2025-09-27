@@ -7,6 +7,7 @@ const router = express.Router()
 
 router.get("/",auth, async (req,res)=>{
   const links = await getUserLinks(req.user._id)
+  console.log("visited: ",links)
   res.render('home',{links:JSON.stringify(links),username:req.user.username})
 })
 

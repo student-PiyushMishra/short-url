@@ -66,7 +66,7 @@ if (document.querySelector(".part2")) {
           }
         });
     }
-    if (e.target.className == "ri-share-fill") {
+    else if (e.target.className == "ri-share-fill") {
       const link = e.target.closest(".link");
       const shortId = link.querySelector(".shortid").textContent;
       popup.innerHTML = writeCopyMsg(shortId);
@@ -82,16 +82,15 @@ if (document.querySelector(".part2")) {
             });
         });
     }
+    else{
+      const link = e.target.closest(".link");
+      if (link) {
+        const shortId = link.querySelector(".shortid").textContent;
+        window.location.href = `https://pmurls.rf.gd/${shortId}`;
+      }
+    }
   });
 }
-
-document.querySelector(".links").addEventListener("click", function (e) {
-  const link = e.target.closest(".link");
-  if (link) {
-    const shortId = link.querySelector(".shortid").textContent;
-    window.location.href = `https://pmurls.rf.gd/${shortId}`;
-  }
-});
 
 function writeWarning(shortId, redirectUrl) {
   return `<h3>Are you sure you want to delete this link?</h3>
